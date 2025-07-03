@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/amiraldo_logo_transparent_white.png') }}">
+    <title>Portifólio-Amiraldo.</title>
+</head>
+
+<body>
+
+
+    <div class="row">        
+        <div class="col-md-10">
+            <img class="imagem-responsive" id="imagem-responsive" src="{{ url_for('static', filename='images/amiraldo_logo_transparent_black.png') }}" alt="Ícone do Site">   
+        </div>
+
+        <div class="col-md-2">
+            <i class="bi bi-list menu-mobile"></i>       
+        </div>
+        
+    </div>
+
+    
+
+    <header id="header">
+        <div class="flex">                
+
+            <a href="#"><img class="imagem" id="imagem" src="{{ url_for('static', filename='images/amiraldo_logo_transparent_black.png') }}" alt="Ícone do Site"></a>
+
+            <nav class="nav-list nav-flex-column" id="navbar-header">
+                <ul class="nav nav-flex-column custom-nav-color" id="my-nav">   
+                    <li class="nav-item">
+                        <a class="nav-link-flex" href="{{ url_for('home') }}">HOME</a> 
+                      </li>                     
+                    <li class="nav-item">
+                        <a class="nav-link-flex" href="{{ url_for('resume') }}"></i>RESUME</a>
+                    </li>                        
+                    <li class="nav-item">
+                        <a class="nav-link-flex" href="{{ url_for('portfolio') }}">PORTFOLIO</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-flex last-link" id="hireme" href="{{ url_for('contact') }}">Hire me</a> 
+                    </li>
+                  </ul>                   
+            </nav> 
+        </div>
+    </header>
+    
+    
+    <aside id="menu-responsive">
+        <section class="profile">
+            <div id="bar">
+                <img src="{{ url_for('static', filename='images/amiraldo_logo_white.png') }}" alt="amiraldologo"> 
+                <h1 id="animated-text">Amiraldo<span id="ponto">.</span></h1> 
+                <div class="social-links mt-1 text-center">
+                    <a href="https://github.com/mrld-rodrigues" target="_blank">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/amiraldo-rodrigues" target="_blank">
+                        <i class="bi bi-linkedin"></i>
+                    </a>                
+                </div>
+                <nav id="navbar" class="nav-menu">
+                    <ul class="nav flex-column text-center mt-4">
+                        <li class="nav-item mt-1">
+                            <a class="nav-link-aside" href="{{ url_for('home') }}">HOME</a>
+                        </li>
+                        <li class="nav-item mt-3">
+                            <a class="nav-link-aside" href="{{ url_for('resume') }}">RESUME</a>
+                        </li>
+                        <li class="nav-item mt-3">
+                            <a class="nav-link-aside" href="{{ url_for('portfolio') }}">PORTFOLIO</a>
+                        </li>  
+                        <li class="nav-item mt-1">
+                            <a class="nav-link-aside" id="hireme" href="{{ url_for('contact') }}">Hire me</a>
+                        </li>               
+                    </ul>
+                </nav>                
+            </div>
+        </section>
+    </aside>
+    
+    <main id="main">
+        <section id="home-section" class="row p-0">            
+            <div class="row conteiner">                           
+                <div class="col-lg-6" data-anime="up">
+                    <h2 class="tag">Software Developer</h2>
+                    <h1 id="hi">Hi, everyone!<br></h1>
+                    <h1 id="ami">I'm Amiraldo Rorigues</h1>    
+                    <p id="text">
+                        I'm passionate about programming, where I see each project as an opportunity to express creativity. To me, developing software is an art, combining logic with innovation to create impactful solutions.
+                    </p>                 
+                </div>             
+                <div class="col-lg-6 cube" data-anime="down">
+                    <div id='cube-container'>
+                        <div class="face top"></div>
+                        <div class="face right"></div>  
+                        <div class="face bottom"></div>
+                        <div class="face left"></div>
+                        <div class="face back"></div>
+                        <div class="face front"></div>
+                    </div>
+                </div>                          
+                <div id="link-social-media" class="row p-0">
+                    <div id="download-cv" class="col-sm-4" data-anime="left">
+                        <a href="{{ url_for('download_file', filename='cv.pdf') }}" class="link" target="_blank">
+                            <span id="dcv" class="link__text">
+                                Download CV
+                            </span>
+                        </a> 
+                    </div>
+                    <div id="links-job" class="col-md-8" data-anime="right">
+                        <ul class="nav">                            
+                            <li class="nav-item">
+                                <a id="git" href="https://github.com/mrld-rodrigues" target="_blank"><i class="bi bi-github"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="linkded" href="https://www.linkedin.com/in/amiraldo-rodrigues" target="_blank"><i class="bi bi-linkedin"></i></a>
+                            </li>                    
+                        </ul>                    
+                    </div>                                  
+                </div>
+            </div>            
+        </section> 
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div id="warning" class="alert alert-dark alert-dismissible fade show" role="alert">
+                        <i class="bi bi-check-circle-fill"></i> {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}        
+        
+    </main>
+
+    <footer>               
+        <img id="image-footer" src="{{ url_for('static', filename='images/amiraldo_logo_transparent_white.png') }}" alt="footerlogo">
+        <div id="text-footer">
+            <p>&copy; 2024 Amiraldo Rodrigues. Todos os direitos reservados.</p>            
+            <ul class="footer-links">
+                <li><a href="{{ url_for('privacy') }}" target="_blank">Política de Privacidade</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                <li><a href="{{ url_for('useterms') }}" target="_blank">Termos de Uso</a></li>
+            </ul>
+        </div>                   
+    </footer>
+    
+    <!-- Tirar o warning depois de 5 segundos POR ALGUM MOTIVO NAO FUNCIONOU NO .JS -->
+    <script>
+        window.addEventListener('load', function() {
+            const warning = document.getElementById('warning');
+            if (warning) {
+                setTimeout(() => {
+                    warning.style.display = 'none'; // Esconde o aviso após 5 segundos
+                }, 5000);
+            }
+        });         
+    </script>
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

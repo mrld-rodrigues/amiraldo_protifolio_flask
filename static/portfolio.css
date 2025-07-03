@@ -1,0 +1,449 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+@font-face {
+  font-family: 'SpecialElite';
+  src: url('../static/fonts/SpecialElite.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html, body{
+  font-family: 'SpecialElite';
+  width: auto; 
+  height: auto; 
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+
+/*
+Barra de rolagem
+*/
+
+*::-webkit-scrollbar{
+  width: 20px;
+}
+
+*::-webkit-scrollbar-track{
+  width: 12px;
+  box-shadow: inset 0 0 .3rem #000000;
+  background-color: #d3d3d3;
+}
+
+*::-webkit-scrollbar-thumb{
+  background-color: #000000;
+}
+
+*::-webkit-scrollbar-button{
+  background-color: #000000;
+}
+
+
+/* 
+  Aside
+*/
+
+#menu-responsive{
+  position: fixed;
+  top: 0;
+  left: -340px;
+  bottom: 0; 
+  overflow-y: hidden;
+  width: 340px;
+  transition: all ease-in-out 0.5s;
+  padding: 0 15px;
+  z-index: 9997;
+  display: flexbox;
+  background: white;
+  align-items: center;
+  justify-items: center;
+}
+
+#menu-responsive .profile img {
+  margin: 15px auto;
+  margin-left: 30px;
+  display: block;
+  width: 250px;
+}
+
+#menu-responsive h1 {
+  font-family: 'SpecialElite';
+  font-weight: 400;
+  font-size: 2em;
+  color: black;
+  margin-left: 80px;
+  
+}
+
+
+/* Icones das redes sociais */
+#menu-responsive a i {
+  color: black;
+  font-size: 42px;
+  padding-right: 20px;
+  margin-left: 25px;
+  
+}
+
+i.bi-github:hover,
+i.bi-github:active {
+  text-shadow: 4px 4px 15px #000000;
+}
+
+i.bi-linkedin:hover,
+i.bi-linkedin:active {
+  text-shadow: 4px 4px 15px #000000;
+}
+
+
+/* os 3 priemiros links*/
+.nav-link-aside:link,
+.nav-link-aside:visited {
+  background-color: white;
+  color: black;
+  font-family: 'SpecialElite';
+  margin-top: 10px;  
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.nav-link-aside:hover,
+.nav-link-aside:active {
+  color: black;
+  text-shadow: 4px 4px 10px #000000;
+  font-family: 'SpecialElite';
+}
+
+
+/* o ultimo link*/
+.nav-link-aside#hireme:link,
+.nav-link-aside#hireme:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px;
+  font-family: 'SpecialElite';
+  margin-top: 30px;
+  font-size: 1.2rem;
+}
+
+.nav-link-aside#hireme:hover,
+.nav-link-aside#hireme:active {
+  background-color: black;
+  color: white;
+  font-family: 'SpecialElite';
+}
+
+
+/*
+  Header
+ */
+
+/* os 3 priemiros links do header*/
+.flex a.nav-link-flex:link,
+.flex a.nav-link-flex:visited {
+  background-color: white;
+  color: black;
+  font-family: 'SpecialElite';
+  text-decoration: none;
+  margin-right: 40px;
+  font-size: 1.2rem;
+}
+
+.flex a.nav-link-flex:hover,
+.flex a.nav-link-flex:active {
+  color: black;
+  text-shadow: 4px 4px 10px #000000;
+  font-family: 'SpecialElite';
+}
+
+
+/* ultimo link do header */
+.flex a.nav-link-flex#hireme:link,
+.flex a.nav-link-flex#hireme:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px;
+  font-family: 'SpecialElite';  
+  margin-top: -10px;
+  font-size: 1.2rem;
+}
+
+.flex a.nav-link-flex#hireme:hover,
+.flex a.nav-link-flex#hireme:active {
+  background-color: black;
+  color: white;
+  font-family: 'SpecialElite';
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  padding: 5px 4%;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  transition: 0.5s;
+  background-color: #ffffff;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.text-shadow {
+  text-shadow: 4px 4px 10px #000000;
+}
+
+
+.flex a {
+  color: #000000;
+}
+
+
+header {
+  width: 100%;
+  height: 200px;
+  padding: 5px 4%;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  transition: 0.5s;
+  background-color: #ffffff;
+}
+
+
+.imagem {
+  margin-top: -10px;
+  margin-left: 0px;
+  width: 250px;
+  height: auto;
+}
+
+header ul {
+  list-style-type: none;
+}
+
+header ul li {
+  display: inline-block;
+  margin: -10px 40px;
+}
+
+/* Animação */
+
+[data-anime] {
+  opacity: 0;
+  transition: 1s;
+}
+
+[data-anime="down"]{
+  transform: translate3d(0, -100%, 0);
+}
+
+[data-anime="up"]{
+  transform: translate3d(0, 100%, 0);
+}
+
+[data-anime="left"]{
+  transform: translate3d(-100%, 0, 0);
+}
+
+[data-anime="right"]{
+  transform: translate3d(50%, 0, 0);
+}
+
+[data-anime].animate{
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* 
+  Imagem central da responsividade
+*/
+
+.imagem-responsive{
+  display: none;
+  z-index: 99;  
+  margin-top: 10px;
+  margin-left: 30%;
+  margin-bottom: -290px;
+  width: 250px;
+  height: auto;
+}
+
+
+/* 
+  Icode para abrir o menu lateral
+*/
+
+i.menu-mobile{
+  position: fixed;
+  color: #fff;
+  background-color: #000000;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1.8rem;
+  border-radius: 4rem;
+  z-index: 9999;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  justify-content: center; 
+  align-items: center; 
+  display: none;
+  }
+
+
+  /* 
+    Footer
+  */
+
+footer {
+  background-color: #000000;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  margin-top: 70px;
+  width: 100%;
+  height: auto;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+#image-footer{
+  width: 110px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; 
+}
+
+.footer-links li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.footer-links li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links li a:hover {
+    text-decoration: underline;
+}
+
+.menu-responsive-active #main #home-section #conteiner{
+  overflow: hidden;  
+}
+
+.menu-responsive-active #menu-responsive{  
+  left: 0;
+}
+
+
+/* 
+  Medias query
+*/
+
+@media (min-width: 435px) and (max-width: 1180px) {
+
+  html, body{
+    overflow-y: auto;
+  }
+
+  #header{
+    display: none;
+  }
+
+  .imagem-responsive{
+    display: flex;      
+    position: relative;
+    margin-left: 14rem;
+  }
+
+  i.menu-mobile{
+    display: flex;
+  }
+
+}
+
+@media (max-width: 430px){
+
+  html, body{
+    overflow-y: auto;
+  }  
+
+  #header{
+    display: none;
+  }
+
+  .imagem-responsive{
+    display: flex;      
+    position: relative;
+    margin-left: 20%;
+  }
+
+  i.menu-mobile{
+    display: flex;
+  }
+
+}
+
+
+@media (max-width: 395px){
+
+  html, body{
+    overflow-y: scroll;
+  }
+
+  #header{
+    display: none;
+  }
+
+  .imagem-responsive{
+    display: flex;      
+    position: relative;
+    margin-left: 15%;
+  }
+
+  i.menu-mobile{
+    display: flex;
+  }
+
+  #text-footer{
+    font-size: 0.7rem;
+  }
+
+  #text-footer li{
+    margin-left: 1.3rem;
+  } 
+
+  #image-footer{
+    display: none;
+  }
+
+}

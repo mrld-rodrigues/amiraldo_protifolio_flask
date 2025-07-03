@@ -1,0 +1,846 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+@font-face {
+  font-family: 'SpecialElite';
+  src: url('../static/fonts/SpecialElite.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html, body{
+  font-family: 'SpecialElite';
+  width: auto; 
+  height: auto; 
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+
+/*
+Barra de rolagem
+*/
+
+*::-webkit-scrollbar{
+  width: 20px;
+}
+
+*::-webkit-scrollbar-track{
+  width: 12px;
+  box-shadow: inset 0 0 .3rem #000000;
+  background-color: #d3d3d3;
+}
+
+*::-webkit-scrollbar-thumb{
+  background-color: #000000;
+}
+
+*::-webkit-scrollbar-button{
+  background-color: #000000;
+}
+
+
+/* Animação */
+
+[data-anime] {
+  opacity: 0;
+  transition: 1s;
+}
+
+[data-anime="down"]{
+  transform: translate3d(0, -100%, 0);
+}
+
+[data-anime="up"]{
+  transform: translate3d(0, 100%, 0);
+}
+
+[data-anime="left"]{
+  transform: translate3d(-100%, 0, 0);
+}
+
+[data-anime="right"]{
+  transform: translate3d(50%, 0, 0);
+}
+
+[data-anime].animate{
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+
+/* 
+  Aside
+*/
+
+#menu-responsive{
+  position: fixed;
+  top: 0;
+  left: -340px;
+  bottom: 0; 
+  overflow-y: hidden;
+  width: 340px;
+  transition: all ease-in-out 0.5s;
+  padding: 0 15px;
+  z-index: 9997;
+  display: flexbox;
+  background: white;
+  align-items: center;
+  justify-items: center;
+}
+
+#menu-responsive .profile img {
+  margin: 15px auto;
+  margin-left: 30px;
+  display: block;
+  width: 250px;
+}
+
+#menu-responsive h1 {
+  font-family: 'SpecialElite';
+  font-weight: 400;
+  font-size: 2em;
+  color: black;
+  margin-left: 80px;
+  
+}
+
+
+/* Icones das redes sociais */
+#menu-responsive a i {
+  color: black;
+  font-size: 42px;
+  padding-right: 20px;
+  margin-left: 25px;
+  
+}
+
+i.bi-github:hover,
+i.bi-github:active {
+  text-shadow: 4px 4px 15px #000000;
+}
+
+i.bi-linkedin:hover,
+i.bi-linkedin:active {
+  text-shadow: 4px 4px 15px #000000;
+}
+
+
+/* os 3 priemiros links*/
+.nav-link-aside:link,
+.nav-link-aside:visited {
+  background-color: white;
+  color: black;
+  font-family: 'SpecialElite';
+  margin-top: 10px;  
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.nav-link-aside:hover,
+.nav-link-aside:active {
+  color: black;
+  text-shadow: 4px 4px 10px #000000;
+  font-family: 'SpecialElite';
+}
+
+
+/* o ultimo link*/
+.nav-link-aside#hireme:link,
+.nav-link-aside#hireme:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px;
+  font-family: 'SpecialElite';
+  margin-top: 30px;
+  font-size: 1.2rem;
+}
+
+.nav-link-aside#hireme:hover,
+.nav-link-aside#hireme:active {
+  background-color: black;
+  color: white;
+  font-family: 'SpecialElite';
+}
+
+
+/*
+  Header
+ */
+
+/* os 3 priemiros links do header*/
+.flex a.nav-link-flex:link,
+.flex a.nav-link-flex:visited {
+  background-color: white;
+  color: black;
+  font-family: 'SpecialElite';
+  text-decoration: none;
+  margin-right: 40px;
+  font-size: 1.2rem;
+}
+
+.flex a.nav-link-flex:hover,
+.flex a.nav-link-flex:active {
+  color: black;
+  text-shadow: 4px 4px 10px #000000;
+  font-family: 'SpecialElite';
+}
+
+
+/* ultimo link do header */
+.flex a.nav-link-flex#hireme:link,
+.flex a.nav-link-flex#hireme:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px;
+  font-family: 'SpecialElite';  
+  margin-top: -10px;
+  font-size: 1.2rem;
+}
+
+.flex a.nav-link-flex#hireme:hover,
+.flex a.nav-link-flex#hireme:active {
+  background-color: black;
+  color: white;
+  font-family: 'SpecialElite';
+}
+
+header {
+  width: 100%;
+  height: 200px;
+  padding: 5px 4%;
+  position: fixed;
+  z-index: 9990;
+  top: 0px;
+  left: 0;
+  transition: 0.5s;
+  background-color: #ffffff;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.text-shadow {
+  text-shadow: 4px 4px 10px #000000;
+}
+
+
+.flex a {
+  color: #000000;
+}
+
+
+.imagem {
+  margin-top: -10px;
+  margin-left: 0px;
+  width: 250px;
+  height: auto;
+}
+
+header ul {
+  list-style-type: none;
+}
+
+header ul li {
+  display: inline-block;
+  margin: -10px 40px;
+}
+
+/* 
+  Conteudo
+*/
+
+#resume{
+  margin-top: 250px;  
+  padding-bottom: 150px;   
+}
+
+#resume h2#title{
+  text-align: center;
+  margin-top: -50px;
+  margin-bottom: -60px;
+  font-family: 'SpecialElite';
+  font-size: 2.5rem;
+}
+
+#section-resume{
+  background-color: #f5f5f5;  
+}
+
+#amiraldo-pic{
+  margin-left: 10rem;
+  width: 400px;
+  margin-top: 100px;  
+  border: 5px transparent #000000;
+  border-radius: 100%;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 1); 
+}
+
+#section-resume p{
+  margin-right: 10rem;
+  font-family: 'SpecialElite';  
+  text-indent: 5%;
+  font-size: 1.1rem;
+}
+
+#timeline h2{
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  font-family: 'SpecialElite';
+  font-weight: 400;
+  font-size: 2.5rem;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  padding-bottom: 3px;
+  text-align: center;
+}
+
+.timeline-items{
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;  
+}
+
+.timeline-items::before{
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background-color: #000000;
+  left: calc(50%);
+}
+
+.timeline-item{
+  margin-bottom: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.timeline-item:last-child{
+  margin-bottom: 0;  
+}
+
+.timeline-item:nth-child(odd){
+  padding-right: calc(50% + 30px);
+  text-align: right;  
+}
+
+.timeline-item:nth-child(even){
+  padding-left: calc(50% + 30px);
+}
+
+.timeline-dot{
+  height: 21px;
+  width: 21px;
+  background-color: #000000;
+  box-shadow: 0 0 25px #000000,
+              0 0 50px #000000;
+  position: absolute;
+  left: calc(50% - 8px);
+  border-radius: 50%;
+  top: 10px;
+}
+
+.timeline-date{
+  background: #f5f5f5;
+  padding: 5px 15px;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.time-line-content h4{
+  margin-left: 10px;
+  line-height: 26px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: 'SpecialElite';
+  margin-bottom: 10px;
+}
+
+.time-line-content p{
+  font-family: 'SpecialElite';
+  font-size: 1.2rem;
+}
+
+.time-line-content{
+  border: 3px solid #000000;
+  padding: 30px 50px;
+  border-radius: 4rem;
+  box-shadow: 0 0 10px #000000;
+  cursor: pointer;
+  transition: 0.3 ease-in-out;
+}
+
+.time-line-content:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #000000;
+  transition: 0.5s;
+}
+
+
+/* 
+  Imagem central da responsividade
+*/
+
+.imagem-responsive{
+  display: none;
+  z-index: 99;  
+  margin-top: 10px;
+  margin-left: 30%;
+  margin-bottom: -290px;
+  width: 250px;
+  height: auto;
+}
+
+
+/* 
+  Icode para abrir o menu lateral
+*/
+
+i.menu-mobile{
+  position: fixed;
+  color: #fff;
+  background-color: #000000;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1.8rem;
+  border-radius: 4rem;
+  z-index: 9999;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  justify-content: center; 
+  align-items: center; 
+  display: none;
+  }
+
+
+  /* 
+    Footer
+  */
+
+footer {
+  background-color: #000000;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+#image-footer{
+  width: 110px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; 
+}
+
+.footer-links li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.footer-links li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links li a:hover {
+    text-decoration: underline;
+}
+
+
+
+.menu-responsive-active #menu-responsive{  
+  left: 0;
+}
+
+
+/* 
+  Medias query
+*/
+
+@media (min-width: 435px) and (max-width: 1180px) {
+
+  
+  html, body{
+    overflow-y: auto;
+  }
+
+  #header{
+    display: none;
+  }
+
+/*
+Barra de rolagem
+*/
+
+*::-webkit-scrollbar{
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track{
+  width: 12px;
+  box-shadow: inset 0 0 .3rem #000000;
+  background-color: #d3d3d3;
+}
+
+*::-webkit-scrollbar-thumb{
+  background-color: #000000;
+}
+
+  .imagem-responsive{
+    display: flex;      
+    position: relative;
+    margin-left: 16.5rem;
+    z-index: 9998;
+  }
+
+  .imagem{
+    margin-left: 7rem;
+    margin-bottom: 15px;
+  }  
+
+  .my-resume p{
+    width: 710px;    
+    margin-left: 2rem; 
+    margin-right: 2rem;   
+    text-align: justify;
+    font-size: 1.6rem !important;   
+  }
+
+
+  .timeline-date{    
+    font-size: 1.4rem;
+  }
+  
+  .time-line-content h4{
+    margin-left: 10px;
+    line-height: 26px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'SpecialElite';
+    margin-bottom: 10px;
+  }
+  
+  .time-line-content p{    
+    font-size: 1.4rem;
+  }
+
+  .timeline-item:nth-child(odd){
+    padding-right: calc(50% + 30px);
+    text-align: right;
+    margin-left: 1rem;
+    margin-right: 1rem;  
+  }
+  
+  .timeline-item:nth-child(even){
+    padding-left: calc(50% + 30px);
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+ 
+
+  i.menu-mobile{
+    display: flex;
+  }
+
+}
+
+@media (max-width: 430px){
+
+    /*
+  Barra de rolagem
+  */
+
+  *::-webkit-scrollbar{
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track{
+    width: 12px;
+    box-shadow: inset 0 0 .3rem #000000;
+    background-color: #d3d3d3;
+  }
+
+  *::-webkit-scrollbar-thumb{
+    background-color: #000000;
+  }
+
+  html, body{
+    overflow-y: auto;
+  }  
+
+  #header{
+    display: none;
+  }
+
+  .imagem-responsive{
+    display: flex;      
+    position: relative;
+    margin-left: 20%;
+    z-index: 9997;
+  }
+
+  i.menu-mobile{
+    display: flex;
+    z-index: 9999;
+  }
+
+  #amiraldo-pic{
+    width: 250px;
+    margin-left: 5.6rem;    
+  } 
+
+
+  .my-resume p{
+    width: 24rem;    
+    margin-left: 1.5rem;    
+    text-align: justify;
+    font-size: 1.3rem !important;   
+  }
+
+
+  .timeline-items::before{
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background-color: #000000;
+    left: 1rem; 
+  }
+  
+  .timeline-item{
+    margin-bottom: 40px;
+    width: 100%;
+    position: relative;
+  }
+
+  .timeline-item:last-child{
+    margin-bottom: 20px;
+  }
+  
+  .timeline-item:nth-child(odd){    
+    padding-right: 10px; 
+    text-align: left;
+  }
+  
+  .timeline-item:nth-child(even){    
+    padding-left: 0; 
+    text-align: left;
+    margin-right: 10px;
+  }
+  
+  .timeline-dot{
+    height: 21px;
+    width: 21px;
+    background-color: #000000;
+    box-shadow: 0 0 25px #000000,
+                0 0 50px #000000;
+    position: absolute;
+    left: 0.5rem; 
+    border-radius: 50%;
+    top: 10px;
+  }
+  
+  .time-line-content{    
+    margin-left: 40px;
+    border: 3px solid #000000;
+    padding: 30px 50px;
+    border-radius: 4rem;
+    box-shadow: 0 0 10px #000000;
+    cursor: pointer;
+    transition: 0.3 ease-in-out;
+  }
+
+  .timeline-date{
+    background: #f5f5f5;
+    padding: 5px 15px;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    font-size: 1.3rem;
+  }
+
+  #text-footer{
+    font-size: 1rem;
+  }
+
+  #text-footer li{
+    margin-left: 1.5rem;
+  } 
+
+  #image-footer{
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 395px){
+
+
+    /*
+  Barra de rolagem
+  */
+
+  *::-webkit-scrollbar{
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track{
+    width: 12px;
+    box-shadow: inset 0 0 .3rem #000000;
+    background-color: #d3d3d3;
+  }
+
+  *::-webkit-scrollbar-thumb{
+    background-color: #000000;
+  }
+
+  html, body{
+    overflow-y: scroll;
+  }
+
+  #header{
+    display: none;
+  }
+
+  .imagem-responsive{
+    display: flex;      
+    position: relative;
+    margin-left: 3.5rem;
+  }
+
+  i.menu-mobile{
+    display: flex;
+  }  
+
+  #text-footer{
+    font-size: 0.7rem;
+  }
+
+  #text-footer li{
+    margin-left: 1.3rem;
+  } 
+
+  #image-footer{
+    display: none;
+  }
+
+  #amiraldo-pic{
+    width: 200px;
+    margin-left: 5.4rem;    
+  } 
+
+
+  .my-resume p{
+    width: 320px;    
+    margin-left: 1rem; 
+    margin-right: 1rem;   
+    text-align: justify;
+    font-size: 1.3rem !important;   
+  }
+
+
+  .timeline-items::before{
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background-color: #000000;
+    margin-left: 6px; 
+  }
+  
+  .timeline-item{
+    margin-bottom: 40px;
+    width: 360px;
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .timeline-item:last-child{
+    margin-bottom: 20px;
+  }
+  
+  .timeline-item:nth-child(odd){    
+    padding-right: 10px; 
+    text-align: left;
+  }
+  
+  .timeline-item:nth-child(even){    
+    padding-left: 0; 
+    text-align: left;
+    margin-right: 10px;
+  }
+  
+  .timeline-dot{
+    height: 21px;
+    width: 21px;
+    background-color: #000000;
+    box-shadow: 0 0 25px #000000,
+                0 0 50px #000000;
+    position: absolute;
+    left: 0.5rem; 
+    border-radius: 50%;
+    top: 10px;
+  }
+  
+  .time-line-content{    
+    margin-left: 40px;
+    border: 3px solid #000000;
+    padding: 30px 50px;
+    border-radius: 4rem;
+    box-shadow: 0 0 10px #000000;
+    cursor: pointer;
+    transition: 0.3 ease-in-out;
+  }
+
+  .timeline-date{
+    background: #f5f5f5;
+    padding: 5px 15px;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    font-size: 1.3rem;
+  }
+  
+}
+
+
+    
