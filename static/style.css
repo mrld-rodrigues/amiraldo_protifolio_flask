@@ -22,6 +22,7 @@ html, body {
   background: #fff;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; /* Garante que não haja scroll horizontal */
 }
 
 main, #main {
@@ -858,6 +859,12 @@ Barra de rolagem
     display: none;
   }
 
+}
+
+section, .section, #home-section, #main, .conteiner {
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 

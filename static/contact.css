@@ -19,6 +19,7 @@ html, body{
   flex-direction: column;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: hidden; /* Adicionado para remover scroll horizontal */
   /* Removido overflow-y: hidden e overflow-x: hidden */
 }
 
@@ -615,6 +616,12 @@ footer {
     display: none;
   }
 
+}
+
+section, .section, .conteiner {
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 

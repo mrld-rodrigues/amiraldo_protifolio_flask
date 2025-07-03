@@ -8,18 +8,6 @@
 }
 
 
-html, body{
-  font-family: 'SpecialElite';
-  width: auto; 
-  height: auto; 
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-
-
 /*
 Barra de rolagem
 */
@@ -446,4 +434,14 @@ footer {
     display: none;
   }
 
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+section, .section, .conteiner {
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }

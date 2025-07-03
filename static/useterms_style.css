@@ -1,12 +1,5 @@
 /* dimenções PC */
 
-html, body{
-    font-family: 'SpecialElite';
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-}
-
 #img_useterms{
     width: 210px;
     height: auto;
@@ -87,3 +80,13 @@ p.a{
   .footer-links li a:hover {
       text-decoration: underline;
   }
+
+html, body {
+  overflow-x: hidden;
+}
+
+section, .section, .contain {
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
