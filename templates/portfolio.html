@@ -91,16 +91,15 @@
     </div>
     <!--End Content-->
     
-    <footer>        
+    <footer>               
         <img id="image-footer" src="{{ url_for('static', filename='images/amiraldo_logo_transparent_white.png') }}" alt="footerlogo">
-        <div>
+        <div id="text-footer">
             <p>&copy; 2024 Amiraldo Rodrigues. Todos os direitos reservados.</p>            
             <ul class="footer-links">
-                <li><a href="{{ url_for('privacy') }}" target="_blank">Política de Privacidade</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                <li><a href="{{ url_for('privacy') }}" target="_blank">Política de Privacidade</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                 <li><a href="{{ url_for('useterms') }}" target="_blank">Termos de Uso</a></li>
             </ul>
-        </div>
-               
+        </div>                   
     </footer>
 
 
