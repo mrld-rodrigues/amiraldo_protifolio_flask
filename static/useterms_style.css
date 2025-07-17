@@ -3,7 +3,7 @@
 #img_useterms{
     width: 210px;
     height: auto;
-    margin-top: 80px;
+    margin-top: 120px; /* Reduzir margin-top para economizar espaço */
     margin-left: 850px;
 }
 
@@ -33,6 +33,9 @@ p.a{
 
 .contain{
     margin-bottom: 100px;
+    min-height: calc(100vh - 200px); /* Altura mínima da viewport menos header */
+    overflow-y: auto; /* Scroll apenas quando necessário */
+    padding-bottom: 80px; /* Espaço para o footer */
 }
 
 

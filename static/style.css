@@ -275,10 +275,14 @@ header ul li {
 #main{
   margin-left: 300px;
   padding-bottom: 60px;
+  background: #fff;
+  flex: 1 0 auto;
 }
 
 #home-section{
   margin-top: 240px;  
+  display: flex;
+  align-items: center;
 }
 
 

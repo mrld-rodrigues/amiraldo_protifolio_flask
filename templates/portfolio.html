@@ -13,8 +13,45 @@
 </head>
 <body>
 
-    <i class="bi bi-list menu-mobile"></i>       
 
+    <div class="row">        
+        <div class="col-md-10">
+            <img class="imagem-responsive" id="imagem-responsive" src="{{ url_for('static', filename='images/amiraldo_logo_transparent_black.png') }}" alt="Ícone do Site">   
+        </div>
+
+        <div class="col-md-2">
+            <i class="bi bi-list menu-mobile"></i>       
+        </div>
+        
+    </div>
+
+    
+
+    <header id="header">
+        <div class="flex">                
+
+            <a href="#"><img class="imagem" id="imagem" src="{{ url_for('static', filename='images/amiraldo_logo_transparent_black.png') }}" alt="Ícone do Site"></a>
+
+            <nav class="nav-list nav-flex-column" id="navbar-header">
+                <ul class="nav nav-flex-column custom-nav-color" id="my-nav">   
+                    <li class="nav-item">
+                        <a class="nav-link-flex" href="{{ url_for('home') }}">HOME</a> 
+                      </li>                     
+                    <li class="nav-item">
+                        <a class="nav-link-flex" href="{{ url_for('resume') }}"></i>RESUME</a>
+                    </li>                        
+                    <li class="nav-item">
+                        <a class="nav-link-flex" href="{{ url_for('portfolio') }}">PORTFOLIO</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-flex last-link" id="hireme" href="{{ url_for('contact') }}">Hire me</a> 
+                    </li>
+                  </ul>                   
+            </nav> 
+        </div>
+    </header>
+    
+    
     <aside id="menu-responsive">
         <section class="profile">
             <div id="bar">
@@ -47,35 +84,13 @@
             </div>
         </section>
     </aside>
-
-    <header id="header">
-        <div class="flex">                
-
-            <a href="#"><img class="imagem" id="imagem" src="{{ url_for('static', filename='images/amiraldo_logo_transparent_black.png')}}" alt="Ícone do Site"></a>
-
-            <nav class="nav-list nav-flex-column" id="navbar-header">
-                <ul class="nav nav-flex-column custom-nav-color" id="my-nav">   
-                    <li class="nav-item">
-                        <a class="nav-link-flex" href="{{ url_for('home') }}">HOME</a> 
-                      </li>                     
-                    <li class="nav-item">
-                        <a class="nav-link-flex" href="{{ url_for('resume') }}"></i>RESUME</a> 
-                    </li>                        
-                    <li class="nav-item">
-                        <a class="nav-link-flex" href="{{ url_for('portfolio') }}">PORTFOLIO</a> 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link-flex last-link" id="hireme" href="{{ url_for('contact') }}">Hire me</a> 
-                    </li>
-                  </ul>                   
-            </nav> 
-        </div>
-    </header>
     
+    <!--Content-->
     <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
         <p>MEU PORTIFÓLIO!!!</p>        
     </div>
-
+    <!--End Content-->
+    
     <footer>        
         <img id="image-footer" src="{{ url_for('static', filename='images/amiraldo_logo_transparent_white.png') }}" alt="footerlogo">
         <div>
