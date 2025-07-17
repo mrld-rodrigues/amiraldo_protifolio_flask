@@ -36,16 +36,16 @@
             <nav class="nav-list nav-flex-column" id="navbar-header">
                 <ul class="nav nav-flex-column custom-nav-color" id="my-nav">   
                     <li class="nav-item">
-                        <a class="nav-link-flex" href="{{ url_for('home') }}">HOME</a> 
+                        <a class="nav-link-flex" href="{{ url_for('main.home') }}">HOME</a> 
                       </li>                     
                     <li class="nav-item">
-                        <a class="nav-link-flex" href="{{ url_for('resume') }}"></i>RESUME</a>
+                        <a class="nav-link-flex" href="{{ url_for('main.resume') }}"></i>RESUME</a>
                     </li>                        
                     <li class="nav-item">
-                        <a class="nav-link-flex" href="{{ url_for('portfolio') }}">PORTFOLIO</a> 
+                        <a class="nav-link-flex" href="{{ url_for('main.portfolio') }}">PORTFOLIO</a> 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link-flex last-link" id="hireme" href="{{ url_for('contact') }}">Hire me</a> 
+                        <a class="nav-link-flex last-link" id="hireme" href="{{ url_for('contact.contact') }}">Hire me</a> 
                     </li>
                   </ul>                   
             </nav> 
@@ -69,16 +69,16 @@
                 <nav id="navbar" class="nav-menu">
                     <ul class="nav flex-column text-center mt-4">
                         <li class="nav-item mt-1">
-                            <a class="nav-link-aside" href="{{ url_for('home') }}">HOME</a>
+                            <a class="nav-link-aside" href="{{ url_for('main.home') }}">HOME</a>
                         </li>
                         <li class="nav-item mt-3">
-                            <a class="nav-link-aside" href="{{ url_for('resume') }}">RESUME</a>
+                            <a class="nav-link-aside" href="{{ url_for('main.resume') }}">RESUME</a>
                         </li>
                         <li class="nav-item mt-3">
-                            <a class="nav-link-aside" href="{{ url_for('portfolio') }}">PORTFOLIO</a>
+                            <a class="nav-link-aside" href="{{ url_for('main.portfolio') }}">PORTFOLIO</a>
                         </li>  
                         <li class="nav-item mt-1">
-                            <a class="nav-link-aside" id="hireme" href="{{ url_for('contact') }}">Hire me</a>
+                            <a class="nav-link-aside" id="hireme" href="{{ url_for('contact.contact') }}">Hire me</a>
                         </li>               
                     </ul>
                 </nav>                
@@ -256,8 +256,8 @@
         <div id="text-footer">
             <p>&copy; 2024 Amiraldo Rodrigues. Todos os direitos reservados.</p>            
             <ul class="footer-links">
-                <li><a href="{{ url_for('privacy') }}" target="_blank">Política de Privacidade</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                <li><a href="{{ url_for('useterms') }}" target="_blank">Termos de Uso</a></li>
+                <li><a href="{{ url_for('main.privacy') }}" target="_blank">Política de Privacidade</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                <li><a href="{{ url_for('main.useterms') }}" target="_blank">Termos de Uso</a></li>
             </ul>
         </div>                   
     </footer>     

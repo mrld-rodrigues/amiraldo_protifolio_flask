@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muitas Tentativas - Amiraldo Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/amiraldo_logo_transparent_white.png') }}">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #333;
+        }
+        .error-content {
+            max-width: 600px;
+            padding: 2rem;
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            color: #e74c3c;
+        }
+        .error-message {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        .error-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        .btn-home {
+            background: #e74c3c;
+            border: 2px solid #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-home:hover {
+            background: transparent;
+            color: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        .countdown {
+            font-size: 1.2rem;
+            color: #e74c3c;
+            margin-top: 2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-content">
+            <div class="error-code">429</div>
+            <div class="error-message">Muitas Tentativas</div>
+            <div class="error-description">
+                Você excedeu o limite de tentativas permitidas.<br>
+                Para sua segurança e a nossa, implemente um tempo de espera.<br><br>
+                <strong>Limites:</strong><br>
+                • Máximo 3 mensagens a cada 15 minutos<br>
+                • Máximo 8 mensagens por hora
+            </div>
+            <a href="{{ url_for('contact') }}" class="btn-home">
+                Voltar ao Contato
+            </a>
+            <div class="countdown">
+                Tente novamente em alguns minutos
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

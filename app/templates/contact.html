@@ -43,16 +43,16 @@
                 <nav id="navbar" class="nav-menu">
                     <ul class="nav flex-column text-center mt-4">
                         <li class="nav-item mt-1">
-                            <a class="nav-link-aside" href="{{ url_for('home') }}">HOME</a>
+                            <a class="nav-link-aside" href="{{ url_for('main.home') }}">HOME</a>
                         </li>
                         <li class="nav-item mt-3">
-                            <a class="nav-link-aside" href="{{ url_for('resume') }}">RESUME</a>
+                            <a class="nav-link-aside" href="{{ url_for('main.resume') }}">RESUME</a>
                         </li>
                         <li class="nav-item mt-3">
-                            <a class="nav-link-aside" href="{{ url_for('portfolio') }}">PORTFOLIO</a>
+                            <a class="nav-link-aside" href="{{ url_for('main.portfolio') }}">PORTFOLIO</a>
                         </li>  
                         <li class="nav-item mt-1">
-                            <a class="nav-link-aside" id="hireme" href="{{ url_for('contact') }}">Hire me</a>
+                            <a class="nav-link-aside" id="hireme" href="{{ url_for('contact.contact') }}">Hire me</a>
                         </li>               
                     </ul>
                 </nav>                
@@ -70,16 +70,16 @@
             <nav class="nav-list nav-flex-column" id="navbar-header">
                 <ul class="nav nav-flex-column custom-nav-color" id="my-nav">
                     <li class="nav-item">
-                        <a class="nav-link-flex" href="{{ url_for('home') }}">HOME</a>
+                        <a class="nav-link-flex" href="{{ url_for('main.home') }}">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link-flex" href="{{ url_for('resume') }}"></i>RESUME</a>
+                        <a class="nav-link-flex" href="{{ url_for('main.resume') }}"></i>RESUME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link-flex" href="{{ url_for('portfolio') }}">PORTFOLIO</a>
+                        <a class="nav-link-flex" href="{{ url_for('main.portfolio') }}">PORTFOLIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link-flex last-link" id="hireme" href="{{ url_for('contact') }}">Hire me</a>
+                        <a class="nav-link-flex last-link" id="hireme" href="{{ url_for('contact.contact') }}">Hire me</a>
                     </li>
                 </ul>
             </nav>
@@ -114,6 +114,20 @@
                     </div>
 
                     <div class="col-md-7 mt-5 mt-md-0 form">
+                        <!-- Flash Messages -->
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <div class="flash-messages mb-4">
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% endwith %}
+                        
                         <div class="card p-5 h-100 shadow border-0" data-anime="right">
                             <form class="row g-3 custom-form" action="/send" method="POST">
                                 <!-- action /send method POST para enviar os emails-->
@@ -160,9 +174,9 @@
         <div>
             <p>&copy; 2024 Amiraldo Rodrigues. Todos os direitos reservados.</p>
             <ul class="footer-links">
-                <li><a href="{{ url_for('privacy') }}" target="_blank">Política de Privacidade</a>
+                <li><a href="{{ url_for('main.privacy') }}" target="_blank">Política de Privacidade</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                <li><a href="{{ url_for('useterms') }}" target="_blank">Termos de Uso</a></li>
+                <li><a href="{{ url_for('main.useterms') }}" target="_blank">Termos de Uso</a></li>
             </ul>
         </div>
 
@@ -171,5 +185,24 @@
 
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+    <!-- Script simples para auto-dismiss das mensagens flash -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashMessages = document.querySelectorAll('.flash-messages .alert');
+            
+            flashMessages.forEach(function(alert) {
+                // Adiciona classe para animação de auto-dismiss
+                alert.classList.add('auto-dismiss');
+                
+                // Remove automaticamente após 5 segundos
+                setTimeout(function() {
+                    if (alert && alert.parentNode) {
+                        alert.remove();
+                    }
+                }, 5000);
+            });
+        });
+    </script>
 
 </body>

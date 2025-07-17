@@ -116,6 +116,42 @@ A aplicação será executada em modo debug por padrão.
 - ✅ Download de CV em PDF
 - ✅ Design responsivo
 - ✅ Animações CSS
+- ✅ **Sistema robusto de tratamento de erros**
+- ✅ **Rate limiting contra spam**
+- ✅ **Validação avançada de formulários**
+- ✅ **Logs estruturados para monitoramento**
+- ✅ **Headers de segurança**
+
+## 🔒 Segurança e Monitoramento
+
+### Sistema de Tratamento de Erros
+
+- **Páginas de erro personalizadas**: 404, 500, 403, 413, 429
+- **Logging estruturado**: Console (dev) e arquivo rotativo (prod)
+- **Rate limiting**: Proteção contra spam no formulário de contato
+- **Validação robusta**: Email, nome, mensagem + detecção de spam
+- **Headers de segurança**: XSS, CSRF, Content-Type proteções
+
+### Logs e Monitoramento
+
+```bash
+# Logs de desenvolvimento (console)
+FLASK_ENV=development python app.py
+
+# Logs de produção (arquivo)
+FLASK_ENV=production python app.py
+# Logs salvos em: logs/portfolio.log
+```
+
+### Testes
+
+Execute os testes do sistema:
+
+```bash
+python test_error_handling.py
+```
+
+Para mais detalhes, consulte: `ERROR_HANDLING_SUMMARY.md`
 
 ## 📄 Licença
 

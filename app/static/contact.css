@@ -11,7 +11,7 @@
 html, body{
   font-family: 'SpecialElite';
   width: 100%; 
-  height: 100%; 
+  min-height: 100vh; /* Alterado de height: 100% para min-height: 100vh */
   margin: 0;
   padding: 0;
   background: #fff;
@@ -622,6 +622,63 @@ section, .section, .conteiner {
   max-width: 100vw;
   box-sizing: border-box;
   overflow-x: hidden;
+}
+
+/* === ESTILOS SIMPLES PARA FLASH MESSAGES === */
+.flash-messages {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.flash-messages .alert {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: slideInDown 0.5s ease-out;
+}
+
+.flash-messages .alert-success {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+}
+
+.flash-messages .alert-danger {
+  background: linear-gradient(135deg, #dc3545, #fd7e14);
+  color: white;
+}
+
+.flash-messages .btn-close {
+  filter: invert(1);
+}
+
+/* Animação suave de entrada */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Auto-dismiss com JavaScript */
+.flash-messages .alert.auto-dismiss {
+  animation: slideInDown 0.5s ease-out, fadeOut 0.5s ease-in 4.5s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
 }
 
 
