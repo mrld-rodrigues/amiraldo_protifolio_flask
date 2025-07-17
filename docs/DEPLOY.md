@@ -6,7 +6,53 @@
 2. **Conta no Render** (gratuita) - https://render.com
 3. **Repositório Git** do projeto
 
-## 🔧 1. Preparação do Projeto (CONCLUÍDO ✅)
+# 🚀 DEPLOY NO RENDER - PASSO A PASSO
+
+## 📋 Pré-requisitos
+
+1. **Conta no GitHub** (gratuita)
+2. **Conta no Render** (gratuita) - https://render.com
+3. **Repositório Git** do projeto
+
+## 🔧 1. Configuração de Deploy
+
+### 1.1 Arquivos de Entrada
+
+O projeto possui múltiplos pontos de entrada para máxima compatibilidade:
+
+1. **`wsgi.py`** (principal) - Para Gunicorn/produção
+2. **`main.py`** - Ponto de entrada alternativo  
+3. **`flask_app.py`** - Para compatibilidade (evita conflitos com pasta app/)
+4. **`run.py`** - Para desenvolvimento
+
+> **Nota:** O arquivo foi renomeado de `app.py` para `flask_app.py` para evitar conflitos com a pasta `app/` do projeto.
+
+### 1.2 Procfile
+
+O arquivo `Procfile` está configurado para usar o `wsgi.py`:
+```
+web: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --max-requests 1000
+```
+
+**Se houver problemas, alternativas em `Procfile.alternatives`:**
+- `web: gunicorn main:app --bind 0.0.0.0:$PORT`
+- `web: gunicorn flask_app:app --bind 0.0.0.0:$PORT`
+- `web: python main.py`
+
+### 1.3 Teste de Deploy
+
+Execute o teste antes de fazer deploy:
+```bash
+python scripts/test_deploy.py
+```
+
+Este script verifica:
+- ✅ Importação do wsgi.py
+- ✅ Importação do main.py  
+- ✅ Compatibilidade com Gunicorn
+- ✅ Funcionamento das rotas principais
+
+## 🛠️ 2. Preparação do Projeto (CONCLUÍDO ✅)
 
 Os seguintes arquivos já foram criados para o deploy:
 

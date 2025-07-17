@@ -6,6 +6,12 @@ import os
 import sys
 from dotenv import load_dotenv
 
+# Adicionar o diretório raiz ao PYTHONPATH
+# tests/integration/check_config.py -> ../../ (raiz do projeto)
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 def check_config():
     """Verifica se todas as configurações necessárias estão presentes"""
     print("🔍 Verificando configurações...")
@@ -60,11 +66,15 @@ def test_app_import():
     """Testa se a aplicação pode ser importada"""
     print("\n🧪 Testando importação da aplicação...")
     try:
-        from app import app
+        from app import create_app
+        app = create_app('testing')
         print("✅ Aplicação importada com sucesso!")
+        print(f"✅ Tipo da app: {type(app)}")
         return True
     except Exception as e:
         print(f"❌ Erro ao importar aplicação: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def main():
@@ -76,7 +86,7 @@ def main():
     
     if config_ok and app_ok:
         print("\n🎉 Tudo configurado corretamente!")
-        print("💡 Para executar: python app.py")
+        print("💡 Para executar: python wsgi.py")
         sys.exit(0)
     else:
         print("\n⚠️ Existem problemas na configuração!")

@@ -1,12 +1,21 @@
 """
 Portfolio Amiraldo Rodrigues - Aplicação Flask
-Ponto de entrada principal da aplicação
+Ponto de entrada principal da aplicação para Gunicorn
 """
 import os
-from app import create_app
+import sys
 
-# Criar a instância da aplicação para o Gunicorn
-app = create_app()
+# Adicionar o diretório atual ao path
+sys.path.insert(0, os.path.dirname(__file__))
+
+try:
+    from app import create_app
+    # Criar a instância da aplicação para o Gunicorn
+    app = create_app()
+    print("✅ Aplicação Flask criada com sucesso!")
+except Exception as e:
+    print(f"❌ Erro ao criar aplicação: {e}")
+    raise
 
 if __name__ == '__main__':
     # Detecta o ambiente

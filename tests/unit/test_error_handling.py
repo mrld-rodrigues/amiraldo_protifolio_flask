@@ -3,6 +3,15 @@
 Script de teste para o sistema de tratamento de erros
 """
 
+import os
+import sys
+
+# Adicionar o diretório raiz ao PYTHONPATH
+# tests/unit/test_error_handling.py -> ../../ (raiz do projeto)
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 def test_imports():
     """Testa se todos os módulos podem ser importados"""
     try:
@@ -11,22 +20,24 @@ def test_imports():
         from app import create_app
         print("✅ app.py importado com sucesso")
         
-        from error_handlers import register_error_handlers
+        from app.core.errors.error_handlers import register_error_handlers
         print("✅ error_handlers.py importado com sucesso")
         
-        from logging_config import setup_logging, log_email_attempt
+        from app.core.errors.logging_config import setup_logging, log_email_attempt
         print("✅ logging_config.py importado com sucesso")
         
-        from rate_limiter import rate_limit, get_rate_limit_status
+        from app.core.security.rate_limiter import rate_limit, get_rate_limit_status
         print("✅ rate_limiter.py importado com sucesso")
         
-        from form_validators import FormValidator
+        from app.core.security.form_validators import FormValidator
         print("✅ form_validators.py importado com sucesso")
         
         return True
         
     except Exception as e:
         print(f"❌ Erro ao importar módulos: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def test_form_validation():
@@ -34,7 +45,7 @@ def test_form_validation():
     try:
         print("\n🔍 Testando validação de formulários...")
         
-        from form_validators import FormValidator
+        from app.core.security.form_validators import FormValidator
         
         # Teste com dados válidos
         valid_data = {
@@ -84,7 +95,7 @@ def test_rate_limiter():
     try:
         print("\n🔍 Testando rate limiter...")
         
-        from rate_limiter import get_rate_limit_status
+        from app.core.security.rate_limiter import get_rate_limit_status
         
         # Teste com IP novo
         status = get_rate_limit_status('192.168.1.1')
