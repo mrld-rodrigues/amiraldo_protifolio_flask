@@ -36,6 +36,7 @@ python tests/integration/test_final.py
 ## 📋 Todos os Testes
 
 Para executar todos os testes, use o script de validação:
+
 ```bash
 python scripts/testing/validate_final.py
 ```

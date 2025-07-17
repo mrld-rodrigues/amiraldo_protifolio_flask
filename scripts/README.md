@@ -13,7 +13,7 @@ Scripts organizados por categoria:
 - `setup.sh` / `setup.bat` - Configuração inicial do ambiente
 - `deploy.sh` - Script de deploy automático
 
-## 🧪 Testing  
+## 🧪 Testing
 
 - `test_deploy.py` - Teste completo de deploy
 - `validate_final.py` - Validação final do projeto

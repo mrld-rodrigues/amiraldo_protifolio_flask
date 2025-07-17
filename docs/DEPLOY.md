@@ -21,7 +21,7 @@
 O projeto possui múltiplos pontos de entrada para máxima compatibilidade:
 
 1. **`wsgi.py`** (principal) - Para Gunicorn/produção
-2. **`main.py`** - Ponto de entrada alternativo  
+2. **`main.py`** - Ponto de entrada alternativo
 3. **`flask_app.py`** - Para compatibilidade (evita conflitos com pasta app/)
 4. **`run.py`** - Para desenvolvimento
 
@@ -30,11 +30,13 @@ O projeto possui múltiplos pontos de entrada para máxima compatibilidade:
 ### 1.2 Procfile
 
 O arquivo `Procfile` está configurado para usar o `wsgi.py`:
+
 ```
 web: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --max-requests 1000
 ```
 
 **Se houver problemas, alternativas em `Procfile.alternatives`:**
+
 - `web: gunicorn main:app --bind 0.0.0.0:$PORT`
 - `web: gunicorn flask_app:app --bind 0.0.0.0:$PORT`
 - `web: python main.py`
@@ -42,13 +44,15 @@ web: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --max-requ
 ### 1.3 Teste de Deploy
 
 Execute o teste antes de fazer deploy:
+
 ```bash
 python scripts/test_deploy.py
 ```
 
 Este script verifica:
+
 - ✅ Importação do wsgi.py
-- ✅ Importação do main.py  
+- ✅ Importação do main.py
 - ✅ Compatibilidade com Gunicorn
 - ✅ Funcionamento das rotas principais
 

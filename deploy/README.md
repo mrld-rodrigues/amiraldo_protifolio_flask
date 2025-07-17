@@ -1,17 +1,35 @@
 # 🚀 Deploy Files
 
-Esta pasta contém arquivos alternativos para deploy e configuração:
+Esta pasta contém arquivos alternativos para deploy e configuração.
 
 ## 📁 Arquivos
 
 - **`main.py`** - Ponto de entrada alternativo para deploy
-- **`run.py`** - Script para execução em desenvolvimento  
+- **`run.py`** - Script para execução em desenvolvimento
 - **`flask_app.py`** - Ponto de entrada sem conflitos (alternativo ao app.py)
 - **`Procfile.alternatives`** - Configurações alternativas do Procfile para diferentes cenários
 
-## 🔧 Uso
+## 🔧 Solução para Conflito app:app
 
-Estes arquivos são usados como fallback caso o `wsgi.py` principal apresente problemas no deploy.
+**Problema identificado:** Render tentava usar `gunicorn app:app` e encontrava a pasta `app/` ao invés de um arquivo `app.py`, causando o erro:
+
+```
+AttributeError: module 'app' has no attribute 'app'
+```
+
+**Solução implementada:**
+
+- Criado `application.py` na raiz como ponto de entrada limpo
+- Atualizado `Procfile` para usar `gunicorn application:app`
+- Este arquivo evita conflitos com a pasta `app/`
+
+## 💡 Uso
+
+### Configuração atual (recomendada):
+
+```
+web: gunicorn application:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --max-requests 1000
+```
 
 ### Para usar uma alternativa:
 
@@ -21,4 +39,6 @@ Estes arquivos são usados como fallback caso o `wsgi.py` principal apresente pr
 
 ## ⚠️ Importante
 
-Mantenha sempre o `wsgi.py` na raiz como ponto de entrada principal.
+- O `application.py` na raiz resolve conflitos de nomenclatura
+- Mantenha sempre uma das opções do Procfile ativa
+- Teste localmente antes do deploy
