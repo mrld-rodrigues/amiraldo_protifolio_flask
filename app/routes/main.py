@@ -65,3 +65,38 @@ def download_file(filename):
     except Exception as e:
         current_app.logger.error(f'Erro no download: {str(e)} - Arquivo: {filename} - IP: {request.remote_addr}')
         abort(500)
+
+@main_bp.route('/health')
+def health_check():
+    """Endpoint de health check para monitoramento"""
+    from flask import jsonify, current_app
+    from datetime import datetime
+    import os
+    
+    try:
+        # Verificar status dos serviços
+        status = {
+            'status': 'healthy',
+            'timestamp': datetime.now().isoformat(),
+            'environment': os.environ.get('FLASK_ENV', 'unknown'),
+            'version': '1.0.0'
+        }
+        
+        # Verificar keep-alive em produção
+        if os.environ.get('FLASK_ENV') == 'production':
+            try:
+                from app.core.services import keep_alive_status
+                status['keep_alive'] = keep_alive_status()
+            except Exception as e:
+                current_app.logger.warning(f'Erro ao verificar keep-alive: {e}')
+                status['keep_alive'] = {'error': str(e)}
+        
+        return jsonify(status), 200
+        
+    except Exception as e:
+        current_app.logger.error(f'Erro no health check: {e}')
+        return jsonify({
+            'status': 'unhealthy',
+            'error': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500

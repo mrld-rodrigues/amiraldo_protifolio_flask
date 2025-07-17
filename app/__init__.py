@@ -62,4 +62,14 @@ def create_app(config_name=None):
     app.register_blueprint(main_bp)
     app.register_blueprint(contact_bp)
     
+    # Inicializa serviços em produção
+    if config_name == 'production' or os.environ.get('FLASK_ENV') == 'production':
+        from app.core.services import start_keep_alive
+        
+        # Inicia serviços após a criação da app
+        with app.app_context():
+            app.logger.info("🚀 Inicializando serviços de produção")
+            start_keep_alive()
+            app.logger.info("✅ Serviços de produção iniciados")
+    
     return app
