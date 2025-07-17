@@ -17,18 +17,32 @@ Esta pasta contém arquivos alternativos para deploy e configuração.
 AttributeError: module 'app' has no attribute 'app'
 ```
 
-**Solução implementada:**
+**Solução implementada (ATUAL):**
+
+- Adicionado `app = create_app()` no final de `app/__init__.py`
+- Agora `from app import app` funciona corretamente
+- Render pode usar `gunicorn app:app` como esperado
+- Criado `render.yaml` para configuração explícita
+
+**Solução alternativa (BACKUP):**
 
 - Criado `application.py` na raiz como ponto de entrada limpo
-- Atualizado `Procfile` para usar `gunicorn application:app`
-- Este arquivo evita conflitos com a pasta `app/`
+- Pode usar `gunicorn application:app` se necessário
 
 ## 💡 Uso
 
 ### Configuração atual (recomendada):
 
 ```
-web: gunicorn application:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --max-requests 1000
+web: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --max-requests 1000
+```
+
+### Configuração com render.yaml:
+
+```yaml
+services:
+  - type: web
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
 ```
 
 ### Para usar uma alternativa:
@@ -39,6 +53,7 @@ web: gunicorn application:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --m
 
 ## ⚠️ Importante
 
-- O `application.py` na raiz resolve conflitos de nomenclatura
-- Mantenha sempre uma das opções do Procfile ativa
+- Adicionado `app = create_app()` em `app/__init__.py` para compatibilidade
+- `render.yaml` fornece configuração explícita para Render
+- `application.py` existe como backup se necessário
 - Teste localmente antes do deploy

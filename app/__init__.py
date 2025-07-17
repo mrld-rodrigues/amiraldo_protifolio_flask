@@ -73,3 +73,7 @@ def create_app(config_name=None):
             app.logger.info("✅ Serviços de produção iniciados")
     
     return app
+
+# Create a default app instance for compatibility with gunicorn app:app
+# This allows Render to find 'app' attribute when using auto-detection
+app = create_app()
