@@ -5,7 +5,9 @@ Sistema para manter serviços ativos na plataforma Render
 
 import threading
 import time
-import requests
+import urllib.request
+import urllib.error
+import json
 import logging
 import os
 from datetime import datetime
@@ -63,21 +65,28 @@ class KeepAliveService:
             bool: True se sucesso, False caso contrário
         """
         try:
-            response = requests.get(
-                self.bot_url, 
-                headers=self.headers, 
-                timeout=30
+            # Criar request com headers
+            req = urllib.request.Request(
+                self.bot_url,
+                headers=self.headers
             )
             
-            if response.status_code == 200:
-                self.logger.info(f"🤖 Bot keep-alive: SUCCESS (Status: {response.status_code})")
-                return True
-            else:
-                self.logger.warning(f"🤖 Bot keep-alive: FAIL (Status: {response.status_code})")
-                return False
+            # Fazer request com timeout
+            with urllib.request.urlopen(req, timeout=30) as response:
+                status_code = response.getcode()
                 
-        except requests.exceptions.RequestException as e:
-            self.logger.error(f"🤖 Bot keep-alive: ERROR - {e}")
+                if status_code == 200:
+                    self.logger.info(f"🤖 Bot keep-alive: SUCCESS (Status: {status_code})")
+                    return True
+                else:
+                    self.logger.warning(f"🤖 Bot keep-alive: FAIL (Status: {status_code})")
+                    return False
+                    
+        except urllib.error.URLError as e:
+            self.logger.error(f"🤖 Bot keep-alive: URL ERROR - {e}")
+            return False
+        except urllib.error.HTTPError as e:
+            self.logger.error(f"🤖 Bot keep-alive: HTTP ERROR - {e}")
             return False
         except Exception as e:
             self.logger.error(f"🤖 Bot keep-alive: UNEXPECTED ERROR - {e}")

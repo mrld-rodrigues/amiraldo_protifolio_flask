@@ -21,3 +21,6 @@ Werkzeug==3.1.3
 # - ssl (secure connections)
 # - email.message (email formatting)
 # - os (operating system interface)
+# - urllib.request (HTTP client for keep-alive service)
+# - threading (background tasks)
+# - logging (application logging)
