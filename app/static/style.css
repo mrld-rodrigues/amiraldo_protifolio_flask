@@ -32,8 +32,8 @@ main, #main {
 
 #warning{
   position: fixed;
-  z-index: 9998;
-  top: 90px;
+  z-index: 9999;
+  top: 80px;
   right: 50px;
 }
 
@@ -79,10 +79,10 @@ main, #main {
 #menu-responsive{
   position: fixed;
   top: 0;
-  left: -340px;
+  left: -100vw;
   bottom: 0; 
   overflow-y: hidden;
-  width: 340px;
+  width: 100vw;
   transition: all ease-in-out 0.5s;
   padding: 0 15px;
   z-index: 9997;
@@ -90,6 +90,21 @@ main, #main {
   background: white;
   align-items: center;
   justify-items: center;
+}
+
+/* Media queries para largura do menu responsivo */
+@media (min-width: 768px) {
+  #menu-responsive {
+    width: 33.33vw;
+    left: -33.33vw;
+  }
+}
+
+@media (max-width: 767px) {
+  #menu-responsive {
+    width: 100vw;
+    left: -100vw;
+  }
 }
 
 #menu-responsive .profile img {
@@ -207,7 +222,7 @@ i.bi-linkedin:active {
   display: inline-block;
   border-radius: 20px;
   font-family: 'SpecialElite';  
-  margin-top: -10px;
+  margin-top: -5px;
   font-size: 1.2rem;
 }
 
@@ -220,8 +235,8 @@ i.bi-linkedin:active {
 
 header {
   width: 100%;
-  height: 100px;
-  padding: 5px 4%;
+  height: 70px;
+  padding: 3px 4%;
   position: fixed;
   top: 0px;
   left: 0;
@@ -247,9 +262,9 @@ header {
 
 
 .imagem {
-  margin-top: -10px;
-  margin-left: 0px;
-  width: 250px;
+  margin-top: -5px;
+  margin-left: -20px;
+  width: 180px;
   height: auto;
 }
 
@@ -280,7 +295,7 @@ header ul li {
 }
 
 #home-section{
-  margin-top: 240px;  
+  margin-top: 180px;  
   display: flex;
   align-items: center;
 }
@@ -436,16 +451,15 @@ header ul li {
   Imagem central da responsividade
 */
 
-.imagem-responsive{
-  display: none;
+.imagem-responsive{  
+  display: none !important;
   z-index: 99;  
-  margin-top: 10px;
-  margin-left: 30%;
-  margin-bottom: -290px;
-  width: 250px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 180px;
   height: auto;
 }
-
 
 /* 
   Icode para abrir o menu lateral
@@ -525,11 +539,65 @@ footer {
 
 
 /* 
-  Medias query
+=======================================================================================
+  MEDIA QUERIES - RESPONSIVIDADE
+=======================================================================================
 */
 
-@media (min-width: 435px) and (max-width: 1180px) {
+/* 
+=======================================================================================
+  GLOBAL - CENTRALIZAÇÃO FORÇADA PARA IMAGEM RESPONSIVA
+  Aplica-se a todas as telas menores que 1180px
+=======================================================================================
+*/
+@media (max-width: 1180px) {
+  .row {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px 0 !important;
+  }
+  
+  .col-md-10 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .imagem-responsive {
+    display: block !important;
+    position: relative !important;
+    margin: 20px auto 0 auto !important;
+    width: 180px !important;
+    height: auto !important;
+  }
+  
+  /* Sobrescrever quando menu ativo */
+  .menu-responsive-active .imagem-responsive {
+    display: block !important;
+    position: relative !important;
+    margin: 20px auto 0 auto !important;
+    width: 180px !important;
+    height: auto !important;
+  }
+}
 
+/* 
+=======================================================================================
+  BREAKPOINT 1: TABLETS E TELAS MÉDIAS
+  Faixa: 435px até 1180px
+  Dispositivos: Tablets em landscape, notebooks pequenos
+=======================================================================================
+*/
+@media (min-width: 435px) and (max-width: 1180px){
+
+  /* === CONFIGURAÇÕES GERAIS === */
   html, body{
     overflow-y: auto;
   }   
@@ -537,36 +605,65 @@ footer {
   #header{
     display: none;
   }
+
+  .col-md-10 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
+  }
+  
+  .row {
+    margin: 0 !important;
+    padding: 10px 0;
+    width: 100% !important;
+    display: flex !important;
+  }
   
 
 /*
 Barra de rolagem
 */
 
-*::-webkit-scrollbar{
-  width: 10px;
-}
-
-*::-webkit-scrollbar-track{
-  width: 12px;
-  box-shadow: inset 0 0 .3rem #000000;
-  background-color: #d3d3d3;
-}
-
-*::-webkit-scrollbar-thumb{
-  background-color: #000000;
-}
-
-  .imagem-responsive{
-    display: flex;      
-    position: relative;
-    margin-left: 15rem;
+  /* === BARRA DE ROLAGEM CUSTOMIZADA === */
+  *::-webkit-scrollbar{
+    width: 10px;
   }
 
+  *::-webkit-scrollbar-track{
+    width: 12px;
+    box-shadow: inset 0 0 .3rem #000000;
+    background-color: #d3d3d3;
+  }
+
+  *::-webkit-scrollbar-thumb{
+    background-color: #000000;
+  }
+
+  /* === IMAGEM RESPONSIVA PRINCIPAL === */
+  .imagem-responsive {
+    display: block !important;
+    position: relative !important;
+    margin: 20px auto 0 auto !important;
+    width: 180px !important;
+    height: auto !important;
+  }
+  
+  /* Sobrescrever quando menu ativo */
+  .menu-responsive-active .imagem-responsive {
+    display: block !important;
+    position: relative !important;
+    margin: 20px auto 0 auto !important;
+    width: 180px !important;
+    height: auto !important;
+  }
+
+  /* === MENU E NAVEGAÇÃO === */
   i.menu-mobile{
     display: flex;
   }  
 
+  /* === LAYOUT PRINCIPAL === */
   #main{
     margin-left: 2rem;      
   }   
@@ -575,6 +672,7 @@ Barra de rolagem
     margin-right: 10px;
   }
   
+  /* === LINKS SOCIAIS === */
   #link-social-media{
     margin-left: 20%;
     margin-top: 1rem;
@@ -583,8 +681,16 @@ Barra de rolagem
 
 }
 
-@media (max-width: 430px){
+/* 
+=======================================================================================
+  BREAKPOINT 2: SMARTPHONES GRANDES
+  Faixa: até 430px
+  Dispositivos: Smartphones em landscape, tablets pequenos em portrait
+=======================================================================================
+*/
+@media (min-width: 396px) and (max-width: 434px){
 
+  /* === CONFIGURAÇÕES GERAIS === */
   html, body{
     overflow-y: auto;
   }
@@ -593,23 +699,33 @@ Barra de rolagem
     display: none;
   }
 
-  /*
-Barra de rolagem
-*/
+  /* === CONTAINERS E LAYOUT === */
+  .col-md-10 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 
-*::-webkit-scrollbar{
-  width: 10px;
-}
+  /* === BARRA DE ROLAGEM CUSTOMIZADA === */
+  *::-webkit-scrollbar{
+    width: 10px;
+  }
 
-*::-webkit-scrollbar-track{
-  width: 12px;
-  box-shadow: inset 0 0 .3rem #000000;
-  background-color: #d3d3d3;
-}
+  *::-webkit-scrollbar-track{
+    width: 12px;
+    box-shadow: inset 0 0 .3rem #000000;
+    background-color: #d3d3d3;
+  }
 
-*::-webkit-scrollbar-thumb{
-  background-color: #000000;
-}
+  *::-webkit-scrollbar-thumb{
+    background-color: #000000;
+  }
+
+  /* === ELEMENTOS DE LAYOUT === */
 
   .cube{
     display: flexbox;
@@ -624,15 +740,28 @@ Barra de rolagem
     justify-content: center;
   }
 
-  .imagem-responsive{
-    display: flex;      
-    position: relative;
-    margin-left: 20%;
+  .imagem-responsive {
+    display: block !important;
+    position: relative !important;
+    margin: 20px auto 0 auto !important;
+    width: 180px !important;
+    height: auto !important;
+  }
+  
+  /* Sobrescrever quando menu ativo */
+  .menu-responsive-active .imagem-responsive {
+    display: block !important;
+    position: relative !important;
+    margin: 20px auto 0 auto !important;
+    width: 180px !important;
+    height: auto !important;
   }
 
   i.menu-mobile{
     display: flex;
   }
+
+  
   #main{
     margin-left: 1.3rem;      
   }   
@@ -646,7 +775,7 @@ Barra de rolagem
   }
 
   #cube-container {
-    margin: 90px;
+    margin: 40px;
     margin-left: 7.5rem;
     box-sizing: border-box;
     transform-style: preserve-3d;
@@ -723,31 +852,51 @@ Barra de rolagem
 
 }
 
-
+/* 
+=======================================================================================
+  BREAKPOINT 3: SMARTPHONES PEQUENOS
+  Faixa: até 395px  
+  Dispositivos: Smartphones pequenos e antigos
+=======================================================================================
+*/
 @media (max-width: 395px){
 
+  /* === CONFIGURAÇÕES GERAIS === */
   html, body{
     overflow-y: auto;
   }
 
-  /*
-Barra de rolagem
-*/
+  #header{
+    display: none;
+  }
 
-*::-webkit-scrollbar{
-  width: 10px;
-}
+  /* === CONTAINERS E LAYOUT === */
+  .col-md-10 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 
-*::-webkit-scrollbar-track{
-  width: 12px;
-  box-shadow: inset 0 0 .3rem #000000;
-  background-color: #d3d3d3;
-}
+  /* === BARRA DE ROLAGEM CUSTOMIZADA === */
+  *::-webkit-scrollbar{
+    width: 10px;
+  }
 
-*::-webkit-scrollbar-thumb{
-  background-color: #000000;
-}
+  *::-webkit-scrollbar-track{
+    width: 12px;
+    box-shadow: inset 0 0 .3rem #000000;
+    background-color: #d3d3d3;
+  }
 
+  *::-webkit-scrollbar-thumb{
+    background-color: #000000;
+  }
+
+  /* === ELEMENTOS ESPECÍFICOS === */
   .cube{
     display: flexbox;
     align-items: center;
@@ -761,20 +910,32 @@ Barra de rolagem
     justify-content: center;
   }
 
-  .imagem-responsive{
-    display: flex;      
-    position: relative;
-    margin-left: 15%;
+  /* === IMAGEM RESPONSIVA PRINCIPAL === */
+
+ .imagem-responsive {
+    display: block !important;
+    position: relative !important;
+    margin: 20px auto 0 auto !important;
+    width: 180px !important;
+    height: auto !important;
+  }
+  
+  /* Sobrescrever quando menu ativo */
+  .menu-responsive-active .imagem-responsive {
+    display: block !important;
+    position: relative !important;
+    margin: 20px auto 0 auto !important;
+    width: 180px !important;
+    height: auto !important;
   }
 
+  /* === MENU E NAVEGAÇÃO === */
   i.menu-mobile{
     display: flex;
   }
 
-  #header{
-    display: none;
-  }
 
+  /* === LAYOUT PRINCIPAL === */
   #main{
     margin-left: 1rem;      
   }   
@@ -787,6 +948,7 @@ Barra de rolagem
     font-size: 2.6rem;
   }
 
+  /* === CUBO 3D === */
   #cube-container {
     margin: 90px;
     margin-left: 5.5rem;
@@ -839,7 +1001,7 @@ Barra de rolagem
     transition: 2s cubic-bezier(.68, -0.55, .27, 1.55);
   }  
 
-
+  /* === DOWNLOADS E LINKS === */
   #download-cv{
     margin-left: 3.5rem;
     width: 200px;
@@ -851,6 +1013,7 @@ Barra de rolagem
     margin-bottom: 50px;
   }
 
+  /* === FOOTER === */
   #text-footer{
     font-size: 0.7rem;
   }
@@ -863,13 +1026,16 @@ Barra de rolagem
     display: none;
   }
 
+  /* 
+  =======================================================================================
+    FIM DOS MEDIA QUERIES RESPONSIVOS
+    Organização: Desktop → Tablets → Smartphones grandes → Smartphones pequenos
+  =======================================================================================
+  */
+
+  section, .section, #home-section, #main, .conteiner {
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
 }
-
-section, .section, #home-section, #main, .conteiner {
-  max-width: 100vw;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-
-
-
