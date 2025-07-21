@@ -26,7 +26,7 @@ class KeepAliveService:
         """
         self.bot_url = bot_url or os.environ.get(
             'KEEP_ALIVE_BOT_URL', 
-            'https://keep-alive-bot-tavl.onrender.com/health'
+            'https://keep-alive-bot-tavl.onrender.com'
         )
         self.interval = interval or int(os.environ.get('KEEP_ALIVE_INTERVAL', 8 * 60))
         self.enabled = os.environ.get('KEEP_ALIVE_ENABLED', 'true').lower() == 'true'
@@ -47,6 +47,13 @@ class KeepAliveService:
             handler.setFormatter(formatter)
             self.logger.addHandler(handler)
             self.logger.setLevel(logging.INFO)
+            
+        # Log de inicialização para diagnóstico
+        self.logger.info(f"KeepAlive inicializado:")
+        self.logger.info(f"  - URL: {self.bot_url}")
+        self.logger.info(f"  - Intervalo: {self.interval}s ({self.interval//60}min)")
+        self.logger.info(f"  - Habilitado: {self.enabled}")
+        print(f"[KeepAlive] Configurado - URL: {self.bot_url}, Intervalo: {self.interval}s")
     
     def ping_bot(self) -> bool:
         """
@@ -111,18 +118,38 @@ class KeepAliveService:
         """
         Inicia o serviço keep-alive
         """
+        self.logger.info("🔧 Tentando iniciar serviço Keep-Alive...")
+        print("[KeepAlive] Tentando iniciar serviço...")
+        
         if not self.enabled:
             self.logger.info("🚫 Keep-Alive desabilitado via configuração")
+            print("[KeepAlive] DESABILITADO - variável KEEP_ALIVE_ENABLED=false")
             return
         
         if self.is_running:
             self.logger.warning("⚠️ Keep-Alive já está rodando")
+            print("[KeepAlive] JÁ ESTÁ RODANDO")
             return
+        
+        self.logger.info("🚀 Iniciando Keep-Alive Worker...")
+        print(f"[KeepAlive] INICIANDO - URL: {self.bot_url}")
         
         self.is_running = True
         self.thread = threading.Thread(target=self._worker, daemon=True)
         self.thread.start()
+        
         self.logger.info("🎯 Keep-Alive Worker iniciado em background")
+        print("[KeepAlive] ✅ WORKER INICIADO EM BACKGROUND")
+        
+        # Faz um ping imediato para testar
+        self.logger.info("🧪 Testando conexão imediata com bot...")
+        success = self.ping_bot()
+        if success:
+            self.logger.info("✅ Teste inicial bem-sucedido")
+            print("[KeepAlive] ✅ TESTE INICIAL OK")
+        else:
+            self.logger.error("❌ Teste inicial falhou")
+            print("[KeepAlive] ❌ TESTE INICIAL FALHOU")
     
     def stop(self):
         """

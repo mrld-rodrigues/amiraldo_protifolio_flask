@@ -46,7 +46,7 @@ def download_file(filename):
             abort(403)
         
         # Lista de arquivos permitidos para download
-        allowed_files = ['cv.pdf', 'JogoDaForca']  # Adicione outros arquivos conforme necessário
+        allowed_files = ['cv.pdf', 'JogoDaForca_Linux_v1.0.tar.gz']  # Adicione outros arquivos conforme necessário
         
         if filename not in allowed_files:
             current_app.logger.warning(f'Arquivo não permitido para download: {filename} - IP: {request.remote_addr}')
