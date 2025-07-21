@@ -16,10 +16,10 @@ def resume():
     """Página de currículo"""
     return render_template('resume.html')
 
-@main_bp.route('/portfolio')
-def portfolio():
-    """Página de portfólio"""
-    return render_template('portfolio.html')
+@main_bp.route('/services')
+def services():
+    """Página de serviços"""
+    return render_template('services.html')
 
 @main_bp.route('/p_privacy')
 def privacy():
