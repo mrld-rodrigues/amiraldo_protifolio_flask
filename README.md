@@ -321,9 +321,9 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 **Amiraldo Rodrigues**
 
-- Portfolio: [Seu Portfolio URL]
-- LinkedIn: [Seu LinkedIn]
-- Email: [Seu Email]
+- Portfolio: [http://dreamwalkerplane.onrender.com]
+- LinkedIn: [https://www.linkedin.com/in/amiraldo-rodrigues/]
+- Email: [amiraldorodriguesmdix@gmail.com]
 
 ---
 
