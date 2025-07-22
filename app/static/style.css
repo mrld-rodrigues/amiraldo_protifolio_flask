@@ -27,7 +27,7 @@ html, body {
 
 main, #main {
   background: #fff;
-  flex: 1 0 auto;
+  /* flex: 1 0 auto; */
 }
 
 #warning{
@@ -93,7 +93,7 @@ main, #main {
 }
 
 /* Media queries para largura do menu responsivo */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   #menu-responsive {
     width: 33.33vw;
     left: -33.33vw;
@@ -105,7 +105,7 @@ main, #main {
     width: 100vw;
     left: -100vw;
   }
-}
+} */
 
 #menu-responsive .profile img {
   margin: 15px auto;
@@ -396,16 +396,19 @@ header ul li {
 
 
 #cube-container {
-  margin: 90px 225px;
+  position: fixed;
+  top: 60%;
+  right: 30%;
+  transform: translateY(-50%);
   box-sizing: border-box;
   transform-style: preserve-3d;
-  position: flex;
   width: 250px;
   height: 250px;
   transition: 2s cubic-bezier(.68, -0.55, .27, 1.55);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 50;
 }
 
 #cube-container .face {
@@ -442,10 +445,9 @@ header ul li {
 }
 
 #cube-container:hover {
-  transform: rotateX(-25deg) rotateY(-40deg);
+  transform: translateY(-50%) rotateX(-25deg) rotateY(-40deg);
   transition: 2s cubic-bezier(.68, -0.55, .27, 1.55);
 }
-
 
 /* 
   Imagem central da responsividade
@@ -537,6 +539,112 @@ footer {
   left: 0;
 }
 
+/* 
+=======================================================================================
+  BREAKPOINT ESPECÍFICO: 991px - POSICIONAMENTO DO CUBO
+  Faixa: 991px de largura
+  Cubo posicionado abaixo do texto e acima dos links
+=======================================================================================
+*/
+@media (max-width: 991px) {
+  #cube-container {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    transform: translateY(0) !important;
+    margin: 80px auto !important;
+    display: block !important;
+    text-align: center !important;
+  }
+
+  #cube-container-responsive {
+    margin-top: 8% !important;
+    margin-bottom: 10% !important;
+  }
+  
+  #cube-container:hover {
+    transform: rotateX(-25deg) rotateY(-40deg) !important;
+    transition: 2s cubic-bezier(.68, -0.55, .27, 1.55) !important;
+  }
+  
+  #main {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-left: 2rem !important;
+  }
+  
+  #home-section {
+    order: 1;
+    text-align: center !important;
+  }
+  
+  #cube-container {
+    order: 2;
+  }
+  
+  .link, #link-social-media {
+    order: 3;
+  }
+  
+  #link-social-media {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 20px auto !important;
+    padding: 0 !important;
+    gap: 30px !important;
+  }
+  
+  #link-social-media #download-cv {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    width: auto !important;
+    text-align: center !important;   
+  }
+  
+  #link-social-media #download-cv .link {
+    margin-left: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  #link-social-media #links-job {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: left !important;    
+    align-items: center !important;
+    margin: 0 !important;
+    width: auto !important;
+    gap: 20px !important;
+  }
+  
+  #link-social-media #links-job ul {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  
+  #link-social-media #links-job ul li {
+    margin: 0 10px !important;
+    text-align: center !important;
+  }
+  
+  #link-social-media #links-job ul li a {
+    display: block !important;
+    text-align: center !important;
+  }
+}
 
 /* 
 =======================================================================================
@@ -585,6 +693,21 @@ footer {
     margin: 20px auto 0 auto !important;
     width: 180px !important;
     height: auto !important;
+  }
+  
+  /* Cubo responsivo em telas menores */
+  #cube-container {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    transform: translateY(0) !important;
+    margin: 30px auto !important;
+    display: block !important;
+  }
+  
+  #cube-container:hover {
+    transform: rotateX(-25deg) rotateY(-40deg) !important;
+    transition: 2s cubic-bezier(.68, -0.55, .27, 1.55) !important;
   }
 }
 
@@ -684,11 +807,94 @@ Barra de rolagem
 /* 
 =======================================================================================
   BREAKPOINT 2: SMARTPHONES GRANDES
-  Faixa: até 430px
+  Faixa: 450px até 434px
   Dispositivos: Smartphones em landscape, tablets pequenos em portrait
+  TODOS OS BOTÕES EM LINHA HORIZONTAL
 =======================================================================================
 */
-@media (min-width: 396px) and (max-width: 434px){
+@media (min-width: 450px) and (max-width: 434px){
+
+  /* === LINKS SOCIAIS - TODOS EM LINHA === */
+  #link-social-media {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 20px auto !important;
+    padding: 0 !important;
+    gap: 20px !important;
+  }
+  
+  #link-social-media #download-cv {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    width: auto !important;
+  }
+  
+  #link-social-media #links-job {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: left !important;
+    align-items: center !important;
+    margin: 0 !important;
+    width: auto !important;
+    gap: 15px !important;
+  }
+  
+  #link-social-media #links-job ul {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  
+  #link-social-media #links-job ul li {
+    margin: 0 8px !important;
+    text-align: center !important;
+  }
+}
+
+/* 
+=======================================================================================
+  BREAKPOINT ESPECÍFICO: MENOR QUE 450px
+  Garantir que redes sociais fiquem lado a lado abaixo do CV
+=======================================================================================
+*/
+@media (max-width: 449px) {
+  #link-social-media #links-job ul {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    gap: 20px !important;
+  }
+  
+  #link-social-media #links-job ul li {
+    margin: 0 !important;
+    text-align: center !important;
+    width: auto !important;
+  }
+}
+
+/* 
+=======================================================================================
+  BREAKPOINT 2: SMARTPHONES GRANDES
+  Faixa: até 449px
+  Dispositivos: Smartphones em landscape, tablets pequenos em portrait
+  CV ACIMA DAS REDES SOCIAIS (VERTICAL)
+=======================================================================================
+*/
+@media (min-width: 396px) and (max-width: 449px){
 
   /* === CONFIGURAÇÕES GERAIS === */
   html, body{
@@ -822,20 +1028,46 @@ Barra de rolagem
   }
   
   #cube-container:hover {
-    transform: rotateX(-25deg) rotateY(-40deg);
-    transition: 2s cubic-bezier(.68, -0.55, .27, 1.55);
+    transform: translateY(0) rotateX(-25deg) rotateY(-40deg) !important;
+    transition: 2s cubic-bezier(.68, -0.55, .27, 1.55) !important;
   }  
 
+  /* === LINKS SOCIAIS - CV ACIMA DAS REDES === */
+  #link-social-media {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 20px auto !important;
+    padding: 0 !important;
+    gap: 20px !important;
+  }
+  
+  #link-social-media #download-cv {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    width: 100% !important;
+    order: 1;
+  }
+  
+  #link-social-media #links-job {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: left !important;
+    align-items: center !important;
+    margin: 0 !important;
+    width: 100% !important;
+    gap: 15px !important;
+    order: 2;
+  }
 
   #download-cv{
     margin-left: 4.5rem;
     width: 200px;
-  }
-
-  #links-job{
-    margin-top: 30px;
-    margin-left: 5.6rem;
-    margin-bottom: 50px;
   }
 
   #text-footer{
@@ -997,20 +1229,47 @@ Barra de rolagem
   }
   
   #cube-container:hover {
-    transform: rotateX(-25deg) rotateY(-40deg);
-    transition: 2s cubic-bezier(.68, -0.55, .27, 1.55);
+    transform: translateY(0) rotateX(-25deg) rotateY(-40deg) !important;
+    transition: 2s cubic-bezier(.68, -0.55, .27, 1.55) !important;
   }  
+
+  /* === LINKS SOCIAIS - CV ACIMA DAS REDES === */
+  #link-social-media {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 20px auto !important;
+    padding: 0 !important;
+    gap: 20px !important;
+  }
+  
+  #link-social-media #download-cv {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    width: 100% !important;
+    order: 1;
+  }
+  
+  #link-social-media #links-job {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: left !important;
+    align-items: center !important;
+    margin: 0 !important;
+    width: 100% !important;
+    gap: 15px !important;
+    order: 2;
+  }
 
   /* === DOWNLOADS E LINKS === */
   #download-cv{
     margin-left: 3.5rem;
     width: 200px;
-  }
-
-  #links-job{
-    margin-top: 10px;
-    margin-left: 4.5rem;
-    margin-bottom: 50px;
   }
 
   /* === FOOTER === */
