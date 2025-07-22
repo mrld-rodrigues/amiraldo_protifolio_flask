@@ -718,11 +718,7 @@ footer {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-
-  .imagem{
-    /* Removido display: none para permitir que #amiraldo-pic apareça */
-  }
-
+  
   /* === FORÇAR EXIBIÇÃO DA IMAGEM DO PERFIL === */
   .col-md-4.imagem #amiraldo-pic {
     display: block !important;
