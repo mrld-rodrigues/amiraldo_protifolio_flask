@@ -13,11 +13,11 @@ Barra de rolagem
 */
 
 *::-webkit-scrollbar{
-  width: 20px;
+  width: 2px;
 }
 
 *::-webkit-scrollbar-track{
-  width: 12px;
+  width: 1px;
   box-shadow: inset 0 0 .3rem #000000;
   background-color: #d3d3d3;
 }
@@ -131,7 +131,7 @@ i.bi-linkedin:active {
 }
 
 
-/*
+ /*
   Header
  */
 
@@ -160,7 +160,7 @@ i.bi-linkedin:active {
   background-color: white;
   color: black;
   border: 2px solid black;
-  padding: 5px 10px;
+  padding: 8px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -168,6 +168,8 @@ i.bi-linkedin:active {
   font-family: 'SpecialElite';  
   margin-top: -10px;
   font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .flex a.nav-link-flex#hireme:hover,
@@ -179,8 +181,8 @@ i.bi-linkedin:active {
 
 header {
   width: 100%;
-  height: 200px;
-  padding: 5px 4%;
+  height: 180px;
+  padding: 3px 4%;
   position: fixed;
   z-index: 9990;
   top: 0px;
@@ -207,11 +209,12 @@ header {
 
 
 .imagem {
-  margin-top: -10px;
-  margin-left: 0px;
-  width: 250px;
+  margin-top: -5px;
+  margin-left: -20px;
+  width: 180px;
   height: auto;
 }
+
 
 header ul {
   list-style-type: none;
@@ -222,47 +225,18 @@ header ul li {
   margin: -10px 40px;
 }
 
-/* Deixar o aside em primeiro plano */
-.menu-responsive-active #menu-responsive{  
-  left: 0;
-}
 
 /* 
-  Header - definição removida para usar a nova definição unificada
+  Imagem central da responsividade
 */
 
-.imagem {
-  margin-top: -10px;
-  margin-left: 0px;
+.imagem-responsive{
+  display: none;
+  z-index: 99;  
+  margin: 10px auto;
   width: 250px;
   height: auto;
 }
-
-.imagem-responsive{
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 60px;
-  height: 60px;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  object-fit: cover;
-  display: none;
-}
-
-.menu-mobile{
-  color: #000;
-  font-size: 1.5rem;
-  margin-top: 25px;
-  margin-left: 10px;
-  cursor: pointer;
-  display: none;
-}
-
-#my-nav{
-  margin-top: 30px;
-}
-
-/* Estilos antigos removidos para usar os novos unificados */
 
 /* 
   Footer
@@ -310,150 +284,7 @@ footer {
 }
 
 
-/* Responsividade */
-
-@media (min-width: 435px) and (max-width: 1180px) {
-
-  html, body{
-    overflow-y: auto;
-  }   
-
-  #header{
-    display: none;
-  }
-  
-
-/*
-Barra de rolagem
-*/
-
-*::-webkit-scrollbar{
-  width: 15px;
-}
-
-*::-webkit-scrollbar-track{
-  width: 10px;
-  box-shadow: inset 0 0 .3rem #000000;
-  background-color: #d3d3d3;
-}
-
-*::-webkit-scrollbar-thumb{
-  background-color: #000000;
-  border-radius: 15px;
-  border: 6px outset #000000;
-}
-
-*::-webkit-scrollbar-thumb:hover{
-  background-color: #7e7e7e;
-}
-
-  .menu-mobile{
-    display: block;
-  }
-
-  .imagem-responsive{
-    display: block;
-  }
-  
-}
-
-@media (max-width: 430px){
-
-  html, body{
-    overflow-y: auto;
-  }
-
-  #header{
-    display: none;
-  }
-
-  /*
-Barra de rolagem
-*/
-
-*::-webkit-scrollbar{
-  width: 10px;
-}
-
-*::-webkit-scrollbar-track{
-  width: 8px;
-  box-shadow: inset 0 0 .3rem #000000;
-  background-color: #d3d3d3;
-}
-
-*::-webkit-scrollbar-thumb{
-  background-color: #000000;
-  border-radius: 15px;
-  border: 3px outset #000000;
-}
-
-*::-webkit-scrollbar-thumb:hover{
-  background-color: #7e7e7e;
-}
-
-  .menu-mobile{
-    display: block;
-  }
-
-  .imagem-responsive{
-    display: block;
-  }
-
-  #text-footer{
-    font-size: 1rem;
-  }
-
-  #text-footer li{
-    margin-left: 1.5rem;
-  } 
-
-  #image-footer{
-    display: none;
-  }
-
-}
-
-
-@media (max-width: 395px){
-
-  html, body{
-    overflow-y: auto;
-  }
-
-  /*
-Barra de rolagem
-*/
-
-*::-webkit-scrollbar{
-  width: 10px;
-}
-
-*::-webkit-scrollbar-track{
-  width: 8px;
-  box-shadow: inset 0 0 .3rem #000000;
-  background-color: #d3d3d3;
-}
-
-*::-webkit-scrollbar-thumb{
-  background-color: #000000;
-  border-radius: 15px;
-  border: 3px outset #000000;
-}
-
-*::-webkit-scrollbar-thumb:hover{
-  background-color: #7e7e7e;
-}
-
-  #text-footer{
-    font-size: 0.7rem;
-  }
-
-  #text-footer li{
-    margin-left: 1.3rem;
-  } 
-
-  #image-footer{
-    display: none;
-  }
-
+#section-resume {
+  background-color: #f5f5f5;
+  padding: 30px;
 }
